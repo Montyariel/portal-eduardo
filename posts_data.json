@@ -87,7 +87,7 @@
     "comentarios": 0,
     "me_gusta": 0,
     "termometro": "PENDIENTE",
-    "retencion_gancho": "La cara humana mirando a los ojos retiene +40% de tiempo promedio",
+    "retencion_gancho": "Shock de Revelación: «¿Por qué tu café sale amargo o quemado?» Quiebra la creencia cotidiana y retiene +55% de tiempo",
     "video_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/e4a7e00240844ec1b74e3b836c2ffd91.mp4",
     "portada_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/9674ef5461be481597bd77ed3b0e1df3.jpg",
     "curva_traccion": [
@@ -99,9 +99,9 @@
       {"hora": "Día sig.", "vistas": 0, "interaccion": 0},
       {"hora": "Cierre 24h", "vistas": 0, "interaccion": 0}
     ],
-    "copy_aprobado": "El secreto para que tu café no sea amargo ni quemado está acá 👇☕ ¿Sabías que comprar el mejor grano de café no sirve de nada si lo molés mal? Conseguilo en nuestros salones exclusivos de Belgrano y Lanús. Comentá MOLINILLO.",
-    "copy_recomendado": "El secreto para que tu café no sea amargo ni quemado está acá 👇☕ ¿Sabías que comprar el mejor grano de café no sirve de nada si lo molés mal? Conseguilo en nuestros salones exclusivos de Belgrano y Lanús. Comentá MOLINILLO.",
-    "diagnostico_estrategico": "Primera publicación donde rompemos el patrón de vitrina estática y ponemos a la vendedora en el mostrador real. Este formato genera confianza instantánea: el cliente ve el local, ve la cara de quien lo atiende y escucha la explicación en persona."
+    "copy_aprobado": "¿Por qué tu café sale amargo o quemado? Mirá este video 👇☕⚡ El 80% cree que la culpa es del grano o de la cafetera, pero el verdadero secreto está en la molienda. Molé en el momento con Noga y sentí el verdadero aroma de cafetería en tu casa. Conseguilo en Belgrano y Lanús. Comentá MOLINILLO.",
+    "copy_recomendado": "¿Por qué tu café sale amargo o quemado? Mirá este video 👇☕⚡ El 80% cree que la culpa es del grano o de la cafetera, pero el verdadero secreto está en la molienda. Molé en el momento con Noga y sentí el verdadero aroma de cafetería en tu casa. Conseguilo en Belgrano y Lanús. Comentá MOLINILLO.",
+    "diagnostico_estrategico": "Formato de alto impacto: se combinó la presencia humana de la vendedora en el mostrador real con un SHOCK directo al dolor de sabor del usuario («¿Por qué tu café sale amargo?»). Atacar el error de preparación frena el scroll en el segundo 1 y proyecta superar ampliamente las 1.000 visualizaciones."
   },
   {
     "id": "8b1b0ad6-49b6-476b-b0df-aa2956c84ad5",
