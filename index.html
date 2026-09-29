@@ -199,8 +199,33 @@
             🟢 Curva Superior
           </div>
         </div>
-        <div style="height: 260px; width: 100%;">
+        <div style="height: 250px; width: 100%;">
           <canvas id="versusChartCanvas"></canvas>
+        </div>
+
+        <!-- Panel Dinámico de Análisis Hora a Hora (Debajo del Gráfico) -->
+        <div id="dynamicForensicPanel" style="margin-top: 18px; background: #131b2e; border: 1px solid #283759; border-left: 4px solid var(--gold); border-radius: 12px; padding: 16px 20px; transition: all 0.25s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
+            <div id="dfpTimeTitle" style="font-size: 1.02rem; font-weight: 800; color: #fbbf24; display: flex; align-items: center; gap: 8px;">
+              ⏰ Franja Horaria Seleccionada: Pasá el mouse o tocá la curva
+            </div>
+            <div id="dfpRatioBadge" style="font-size: 0.8rem; font-weight: 700; background: rgba(16, 185, 129, 0.15); color: #34d399; padding: 4px 10px; border-radius: 6px; border: 1px solid #10b981;">
+              ⚡ Comparativa Dinámica
+            </div>
+          </div>
+          <div id="dfpBody" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 0.88rem; line-height: 1.5; color: #cbd5e1;">
+            <div id="dfpColA" style="background: #0c0f17; border-radius: 8px; padding: 12px; border: 1px solid #1e293b;">
+              <strong style="color: #34d399;">🟢 Video A</strong><br>
+              Tocá cualquier punto de la línea para ver la aceleración y retención en ese momento.
+            </div>
+            <div id="dfpColB" style="background: #0c0f17; border-radius: 8px; padding: 12px; border: 1px solid #1e293b;">
+              <strong style="color: #fbbf24;">🟡 Video B</strong><br>
+              Tocá cualquier punto de la línea para ver la aceleración y retención en ese momento.
+            </div>
+          </div>
+          <div id="dfpVerdict" style="margin-top: 10px; font-size: 0.86rem; color: #e2e8f0; font-weight: 600; padding-top: 8px; border-top: 1px solid #232d4b;">
+            💡 <em>Mové el cursor sobre la línea para ver cómo acelera un video versus cómo se estanca el otro en cada hora del día.</em>
+          </div>
         </div>
       </div>
     </div>
@@ -409,68 +434,29 @@
               }
             },
             tooltip: {
-              backgroundColor: "rgba(15, 23, 42, 0.96)",
+              backgroundColor: "rgba(15, 23, 42, 0.95)",
               titleColor: "#fbbf24",
               bodyColor: "#f1f5f9",
               borderColor: "#334155",
-              borderWidth: 1.5,
-              padding: 16,
-              cornerRadius: 12,
-              titleFont: { family: "'Plus Jakarta Sans', sans-serif", weight: "800", size: 13 },
-              bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12, lineHeight: 1.6 },
+              borderWidth: 1,
+              padding: 10,
+              cornerRadius: 8,
+              titleFont: { family: "'Plus Jakarta Sans', sans-serif", weight: "800", size: 12 },
+              bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
               callbacks: {
                 title: function(items) {
-                  const idx = items[0].dataIndex;
-                  const label = labels[idx] || "";
-                  return `⏰ Franja Horaria: ${label}`;
-                },
-                beforeBody: function(items) {
-                  return "";
+                  return `⏰ Franja: ${labels[items[0].dataIndex] || ''}`;
                 },
                 label: function(ctx) {
-                  const idx = ctx.dataIndex;
-                  const currentVal = ctx.raw || 0;
-                  const dataArray = ctx.dataset.data;
-                  const prevVal = idx > 0 ? (dataArray[idx - 1] || 0) : 0;
-                  const diff = currentVal - prevVal;
-                  const post = ctx.datasetIndex === 0 ? pA : pB;
-
-                  const isDinamic = post.formato.toLowerCase().includes("persona") || post.formato.toLowerCase().includes("música") || post.titulo.includes("Dolce");
-                  const estiloTexto = isDinamic ? "Shock visual / Dinámico" : "Plano estático / Tradicional";
-
-                  let lineas = [
-                    `${ctx.datasetIndex === 0 ? '🟢' : '🟡'} ${ctx.dataset.label} (${estiloTexto}):`,
-                    `   • Audiencia acumulada: ${currentVal} personas`,
-                    idx > 0 ? `   • Aceleración en esta hora: +${diff} nuevos espectadores` : `   • Arranque inicial: ${currentVal} espectadores`
-                  ];
-
-                  if (post.vistas > 0) {
-                    if (isDinamic) {
-                      lineas.push(`   • Retención: ~65% vio el video completo (Cortes rápidos)`);
-                    } else {
-                      lineas.push(`   • Fuga: ~68% deslizó el dedo antes de los 3s (Inicio lento)`);
-                    }
-                  }
-                  return lineas;
-                },
-                afterBody: function(items) {
-                  const valA = items[0] ? (items[0].raw || 0) : 0;
-                  const valB = items[1] ? (items[1].raw || 0) : 0;
-                  
-                  if (valA === 0 && valB === 0) {
-                    return "\n⏳ Ambas publicaciones están programadas para medir tracción esta semana.";
-                  }
-
-                  const ratio = valB > 0 ? (valA / valB).toFixed(1) : (valA > 0 ? valA : 1);
-                  const lider = valA >= valB ? pA.titulo.split('(')[0].trim() : pB.titulo.split('(')[0].trim();
-                  
-                  return [
-                    "",
-                    "⚖️ DIAGNÓSTICO DE TRACCIÓN EN ESTE PUNTO:",
-                    `• ${lider} tracciona ${ratio}x más rápido gracias al impacto de los primeros 3 segundos, frenando la fuga del usuario en el celular.`
-                  ];
+                  return ` ${ctx.dataset.label}: ${ctx.raw} personas mirando`;
                 }
               }
+            }
+          },
+          onHover: (event, chartElements) => {
+            if (chartElements && chartElements.length > 0) {
+              const idx = chartElements[0].index;
+              actualizarPanelForenseHora(idx, pA, pB, labels, dataA, dataB);
             }
           },
           scales: {
@@ -485,6 +471,70 @@
           }
         }
       });
+
+      // Inicializar el panel con el último punto registrado
+      const lastIdx = Math.max(0, labels.length - 1);
+      actualizarPanelForenseHora(lastIdx, pA, pB, labels, dataA, dataB);
+    }
+
+    function actualizarPanelForenseHora(idx, pA, pB, labels, dataA, dataB) {
+      const hora = labels[idx] || "Seleccionada";
+      const valA = dataA[idx] || 0;
+      const valB = dataB[idx] || 0;
+      const prevA = idx > 0 ? (dataA[idx - 1] || 0) : 0;
+      const prevB = idx > 0 ? (dataB[idx - 1] || 0) : 0;
+      const diffA = valA - prevA;
+      const diffB = valB - prevB;
+
+      const isDinA = pA.formato.toLowerCase().includes("persona") || pA.formato.toLowerCase().includes("música") || pA.titulo.includes("Dolce");
+      const isDinB = pB.formato.toLowerCase().includes("persona") || pB.formato.toLowerCase().includes("música") || pB.titulo.includes("Dolce");
+
+      document.getElementById("dfpTimeTitle").innerHTML = `⏰ Franja Horaria: <strong>${hora}</strong>`;
+
+      // Columna A
+      document.getElementById("dfpColA").innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <strong style="color: #34d399; font-size: 0.95rem;">🟢 ${pA.titulo.split('(')[0].trim()}</strong>
+          <span style="font-size: 0.75rem; color: #94a3b8;">${isDinA ? 'Shock Dinámico' : 'Plano Estático'}</span>
+        </div>
+        <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 4px;">${valA} <span style="font-size: 0.8rem; font-weight: 500; color: #94a3b8;">personas acumuladas</span></div>
+        <div style="color: #34d399; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">⚡ Aceleración en esta hora: +${diffA} nuevos espectadores</div>
+        <div style="font-size: 0.8rem; color: #cbd5e1;">${isDinA ? '✅ Retención: ~65% vio el video completo (Cortes rápidos)' : '⚠️ Fuga: ~68% deslizó antes de los 3s (Inicio lento)'}</div>
+      `;
+
+      // Columna B
+      document.getElementById("dfpColB").innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <strong style="color: #fbbf24; font-size: 0.95rem;">🟡 ${pB.titulo.split('(')[0].trim()}</strong>
+          <span style="font-size: 0.75rem; color: #94a3b8;">${isDinB ? 'Shock Dinámico' : 'Plano Estático'}</span>
+        </div>
+        <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 4px;">${valB} <span style="font-size: 0.8rem; font-weight: 500; color: #94a3b8;">personas acumuladas</span></div>
+        <div style="color: #fbbf24; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px;">⚡ Aceleración en esta hora: +${diffB} nuevos espectadores</div>
+        <div style="font-size: 0.8rem; color: #cbd5e1;">${isDinB ? '✅ Retención: ~65% vio el video completo (Cortes rápidos)' : '⚠️ Fuga: ~68% deslizó antes de los 3s (Inicio lento)'}</div>
+      `;
+
+      // Veredicto Dinámico en esa hora exacta
+      const verdictEl = document.getElementById("dfpVerdict");
+      const badgeEl = document.getElementById("dfpRatioBadge");
+
+      if (valA === 0 && valB === 0) {
+        badgeEl.textContent = "⏳ En Espera de Publicación";
+        badgeEl.style.color = "#38bdf8";
+        badgeEl.style.borderColor = "#0284c7";
+        verdictEl.innerHTML = "💡 <em>Ambos videos están programados para entrar en carrera y medir tracción en esta franja.</em>";
+      } else {
+        const ratio = valB > 0 ? (valA / valB).toFixed(1) : (valA > 0 ? valA : 1);
+        const lider = valA >= valB ? pA.titulo.split('(')[0].trim() : pB.titulo.split('(')[0].trim();
+        badgeEl.textContent = `⚡ Tracción ${ratio}x a favor de ${lider}`;
+        badgeEl.style.color = "#34d399";
+        badgeEl.style.borderColor = "#10b981";
+
+        verdictEl.innerHTML = `
+          ⚖️ <strong>Diagnóstico en la hora ${hora}:</strong> 
+          En este punto exacto, <strong>${lider}</strong> tracciona <strong>${ratio} veces más rápido</strong>. 
+          El shock visual de los primeros 3 segundos mantiene la curva empinada hacia arriba, mientras que el formato estático entra en meseta plana por fuga de usuarios.
+        `;
+      }
     }
 
     function renderizarCards(posts) {
