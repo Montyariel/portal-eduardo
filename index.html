@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root {
       --bg: #0c0f17;
@@ -183,6 +184,26 @@
       </div>
 
       <div class="versus-card-grid" id="versusResultados"></div>
+
+      <!-- Gráfico de Curva de Tracción Horaria -->
+      <div style="margin-top: 28px; background: #0c0f17; border: 1px solid #1e293b; border-radius: 14px; padding: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: #fbbf24; display: flex; align-items: center; gap: 8px;">
+              📈 Curva de Tracción y Retención (Cómo caminó cada video hora a hora)
+            </h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">
+              Mirá cómo despega el video cuando engancha al público versus cuando se queda en meseta plana.
+            </p>
+          </div>
+          <div id="chartBadgeWinner" style="font-size: 0.78rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid #10b981;">
+            🟢 Curva Superior
+          </div>
+        </div>
+        <div style="height: 260px; width: 100%;">
+          <canvas id="versusChartCanvas"></canvas>
+        </div>
+      </div>
     </div>
 
     <!-- Barra de Filtros -->
@@ -312,6 +333,113 @@
           </div>
         </div>
       `;
+
+      dibujarCurvasVersus(pA, pB);
+    }
+
+    let versusChartInstance = null;
+
+    function dibujarCurvasVersus(pA, pB) {
+      const ctx = document.getElementById("versusChartCanvas");
+      if (!ctx) return;
+
+      const curvaA = pA.curva_traccion || [];
+      const curvaB = pB.curva_traccion || [];
+      const labels = curvaA.map(c => c.hora);
+
+      const dataA = curvaA.map(c => c.vistas);
+      const dataB = curvaB.map(c => c.vistas);
+
+      const isA_Superior = pA.vistas >= pB.vistas;
+      const badgeWinner = document.getElementById("chartBadgeWinner");
+      if (badgeWinner) {
+        if (pA.vistas === 0 && pB.vistas === 0) {
+          badgeWinner.textContent = "⏳ Publicaciones en Espera de Tracción";
+          badgeWinner.style.borderColor = "#0284c7";
+          badgeWinner.style.color = "#38bdf8";
+          badgeWinner.style.background = "rgba(2, 132, 199, 0.15)";
+        } else {
+          const winnerTitle = isA_Superior ? pA.titulo : pB.titulo;
+          badgeWinner.textContent = `🟢 Curva Dominante: ${winnerTitle.split('(')[0].trim()}`;
+          badgeWinner.style.borderColor = "#10b981";
+          badgeWinner.style.color = "#34d399";
+          badgeWinner.style.background = "rgba(16, 185, 129, 0.15)";
+        }
+      }
+
+      if (versusChartInstance) {
+        versusChartInstance.destroy();
+      }
+
+      versusChartInstance = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: pA.titulo.split('(')[0].trim(),
+              data: dataA,
+              borderColor: "#10b981",
+              backgroundColor: "rgba(16, 185, 129, 0.12)",
+              borderWidth: 3,
+              tension: 0.35,
+              fill: true,
+              pointRadius: 5,
+              pointBackgroundColor: "#10b981"
+            },
+            {
+              label: pB.titulo.split('(')[0].trim(),
+              data: dataB,
+              borderColor: "#f59e0b",
+              backgroundColor: "rgba(245, 158, 11, 0.08)",
+              borderWidth: 3,
+              tension: 0.35,
+              fill: true,
+              pointRadius: 5,
+              pointBackgroundColor: "#f59e0b"
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: "index",
+            intersect: false
+          },
+          plugins: {
+            legend: {
+              labels: {
+                color: "#e2e8f0",
+                font: { family: "'Plus Jakarta Sans', sans-serif", weight: "700", size: 12 }
+              }
+            },
+            tooltip: {
+              backgroundColor: "#1e293b",
+              titleColor: "#fbbf24",
+              bodyColor: "#f1f5f9",
+              borderColor: "#334155",
+              borderWidth: 1,
+              padding: 12,
+              callbacks: {
+                label: function(ctx) {
+                  return ` ${ctx.dataset.label}: ${ctx.raw} personas mirando`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: "rgba(255, 255, 255, 0.05)" },
+              ticks: { color: "#94a3b8", font: { size: 11, weight: "600" } }
+            },
+            y: {
+              grid: { color: "rgba(255, 255, 255, 0.05)" },
+              ticks: { color: "#94a3b8", font: { size: 11, weight: "600" } }
+            }
+          }
+        }
+      });
     }
 
     function renderizarCards(posts) {

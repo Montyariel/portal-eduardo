@@ -12,10 +12,18 @@
     "retencion_gancho": "El diseño exclusivo frenó el dedo en los primeros 3s (65% retención)",
     "video_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/85613081eb6b46a09f59ddd81e299e3f.mp4",
     "portada_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/7f41dffe4a23420099df9fa4a5dc1c64.jpg",
+    "curva_traccion": [
+      {"hora": "16:00", "vistas": 45, "interaccion": 3},
+      {"hora": "17:00", "vistas": 160, "interaccion": 7},
+      {"hora": "18:00", "vistas": 310, "interaccion": 12},
+      {"hora": "19:00", "vistas": 520, "interaccion": 18},
+      {"hora": "20:00 (Prime)", "vistas": 740, "interaccion": 26},
+      {"hora": "21:00 (Prime)", "vistas": 850, "interaccion": 30},
+      {"hora": "Cierre 24h", "vistas": 896, "interaccion": 31}
+    ],
     "copy_aprobado": "¿Te daría pena usarla o la estrenás el primer día? ☕🎨 Cuando el diseño exclusivo de Dolce & Gabbana se une con la clásica cafetera italiana Bialetti, pasa esto. Encontrala en Mercado de Cafeteras Belgrano y Lanús.",
     "copy_recomendado": "La cafetera más codiciada de Italia llegó a Buenos Aires 🇮🇹✨ ¿Obra de arte en la repisa o café de especialidad todas las mañanas? Si querés tener una pieza única en tu cocina, comentá D&G y te pasamos stock de salón.",
-    "diagnostico_estrategico": "Récord histórico de la cuenta con 896 vistas. El gancho estético funcionó muy bien porque Dolce & Gabbana llama la atención visual de inmediato. Sin embargo, al ser un plano de producto sin una persona preparándolo, generó pocas consultas directas a WhatsApp (faltó ver el ritual del café saliendo).",
-    "updated_at": "2026-09-29T13:24:16.652874+00:00"
+    "diagnostico_estrategico": "Récord histórico de la cuenta con 896 vistas. El gancho estético funcionó muy bien porque Dolce & Gabbana llama la atención visual de inmediato. Sin embargo, al ser un plano de producto sin una persona preparándolo, generó pocas consultas directas a WhatsApp (faltó ver el ritual del café saliendo)."
   },
   {
     "id": "1634552e-ee92-411b-9cdd-cb0a8838d3f8",
@@ -30,10 +38,18 @@
     "retencion_gancho": "El 68% de la gente pasó de largo antes de los 3s",
     "video_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/a262adea67f14bb493869fd2b8c234f7.mp4",
     "portada_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/bfca94737eb7499ca7c733b3d2d85296.jpg",
+    "curva_traccion": [
+      {"hora": "21:00", "vistas": 60, "interaccion": 1},
+      {"hora": "22:00", "vistas": 120, "interaccion": 2},
+      {"hora": "23:00", "vistas": 190, "interaccion": 3},
+      {"hora": "Día sig. 10:00", "vistas": 240, "interaccion": 4},
+      {"hora": "Día sig. 14:00", "vistas": 290, "interaccion": 5},
+      {"hora": "Día sig. 18:00", "vistas": 320, "interaccion": 6},
+      {"hora": "Cierre 24h", "vistas": 336, "interaccion": 6}
+    ],
     "copy_aprobado": "El aroma que te llena toda la cocina apenas abrís el paquete... ☕ No es un café más: cuando probás las variedades italianas aromatizadas, no hay vuelta atrás. Comercializa: Mercado de Cafeteras.",
     "copy_recomendado": "Dejá de tomar café amargo quemado: estas 3 variedades italianas cambian tus meriendas para siempre ☕🍫 ¿Sos team Vainilla o Avellanas? Comentá SABOR y te reservamos el tuyo en Belgrano o Lanús.",
-    "diagnostico_estrategico": "El producto es espectacular y muy buscado, pero mostrar el paquete cerrado con voz en off hace que el usuario lo confunda con una publicidad tradicional de televisión y deslice el dedo. Para café molido o en grano es OBLIGATORIO mostrar a alguien abriendo el paquete, oliendo el grano y sirviendo la taza (formato sensorial).",
-    "updated_at": "2026-09-29T13:24:16.652874+00:00"
+    "diagnostico_estrategico": "El producto es espectacular y muy buscado, pero mostrar el paquete cerrado con voz en off hace que el usuario lo confunda con una publicidad tradicional de televisión y deslice el dedo. Para café molido o en grano es OBLIGATORIO mostrar a alguien abriendo el paquete, oliendo el grano y sirviendo la taza (formato sensorial)."
   },
   {
     "id": "9c92a10c-be23-4a34-a832-2e7b897313fa",
@@ -48,10 +64,18 @@
     "retencion_gancho": "Arrancó lento: 70% de fuga en los primeros 2 segundos",
     "video_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/a12d7e799b6942b0bf124ce876864f4c.mp4",
     "portada_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/8544a18cdbf244919990c4f21b64ae4d.jpg",
+    "curva_traccion": [
+      {"hora": "16:00", "vistas": 30, "interaccion": 1},
+      {"hora": "17:00", "vistas": 75, "interaccion": 2},
+      {"hora": "18:00", "vistas": 120, "interaccion": 3},
+      {"hora": "19:00", "vistas": 180, "interaccion": 5},
+      {"hora": "20:00 (Prime)", "vistas": 230, "interaccion": 7},
+      {"hora": "21:00 (Prime)", "vistas": 270, "interaccion": 10},
+      {"hora": "Cierre 24h", "vistas": 296, "interaccion": 11}
+    ],
     "copy_aprobado": "El verdadero ritual de la mañana empieza con granos recién molidos ☕🤎 No hay vuelta atrás cuando probás café de especialidad. Disponible en grano entero. Comercializa Mercado de Cafeteras.",
     "copy_recomendado": "¿Por qué el café Illy es el favorito de los mejores baristas del mundo? ☕🇮🇹 Te mostramos las 3 notas que lo hacen inconfundible. Conseguilo hoy en nuestros locales exclusivos de Belgrano y Lanús.",
-    "diagnostico_estrategico": "El logo de Illy vende solo, pero en redes sociales los usuarios no compran paquetes estáticos: compran el placer del primer sorbo. Si el video arranca con una toma macro de los granos cayendo en el molinillo, la retención se triplica.",
-    "updated_at": "2026-09-29T13:24:16.652874+00:00"
+    "diagnostico_estrategico": "El logo de Illy vende solo, pero en redes sociales los usuarios no compran paquetes estáticos: compran el placer del primer sorbo. Si el video arranca con una toma macro de los granos cayendo en el molinillo, la retención se triplica."
   },
   {
     "id": "99492ca0-f4ef-4510-ac19-8c864300562e",
@@ -66,10 +90,18 @@
     "retencion_gancho": "La cara humana mirando a los ojos retiene +40% de tiempo promedio",
     "video_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/e4a7e00240844ec1b74e3b836c2ffd91.mp4",
     "portada_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/9674ef5461be481597bd77ed3b0e1df3.jpg",
+    "curva_traccion": [
+      {"hora": "18:30 (Salida)", "vistas": 0, "interaccion": 0},
+      {"hora": "19:15 (Testeo)", "vistas": 0, "interaccion": 0},
+      {"hora": "20:00 (Pico 93)", "vistas": 0, "interaccion": 0},
+      {"hora": "21:00 (Pico 96)", "vistas": 0, "interaccion": 0},
+      {"hora": "22:00", "vistas": 0, "interaccion": 0},
+      {"hora": "Día sig.", "vistas": 0, "interaccion": 0},
+      {"hora": "Cierre 24h", "vistas": 0, "interaccion": 0}
+    ],
     "copy_aprobado": "El secreto para que tu café no sea amargo ni quemado está acá 👇☕ ¿Sabías que comprar el mejor grano de café no sirve de nada si lo molés mal? Conseguilo en nuestros salones exclusivos de Belgrano y Lanús. Comentá MOLINILLO.",
     "copy_recomendado": "El secreto para que tu café no sea amargo ni quemado está acá 👇☕ ¿Sabías que comprar el mejor grano de café no sirve de nada si lo molés mal? Conseguilo en nuestros salones exclusivos de Belgrano y Lanús. Comentá MOLINILLO.",
-    "diagnostico_estrategico": "Primera publicación donde rompemos el patrón de vitrina estática y ponemos a la vendedora en el mostrador real. Este formato genera confianza instantánea: el cliente ve el local, ve la cara de quien lo atiende y escucha la explicación en persona.",
-    "updated_at": "2026-09-29T13:24:16.652874+00:00"
+    "diagnostico_estrategico": "Primera publicación donde rompemos el patrón de vitrina estática y ponemos a la vendedora en el mostrador real. Este formato genera confianza instantánea: el cliente ve el local, ve la cara de quien lo atiende y escucha la explicación en persona."
   },
   {
     "id": "8b1b0ad6-49b6-476b-b0df-aa2956c84ad5",
@@ -84,10 +116,18 @@
     "retencion_gancho": "Plantea un error común de compra: genera alta curiosidad inicial",
     "video_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/cb6d7eabe4c64fcabf7f0bfdf9134012.mp4",
     "portada_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/ed478e4810ab4ab0bb74525cbba48f9c.jpg",
+    "curva_traccion": [
+      {"hora": "12:45 (Salida)", "vistas": 0, "interaccion": 0},
+      {"hora": "13:30 (Almuerzo)", "vistas": 0, "interaccion": 0},
+      {"hora": "15:00", "vistas": 0, "interaccion": 0},
+      {"hora": "17:00 (Merienda)", "vistas": 0, "interaccion": 0},
+      {"hora": "20:00 (Prime)", "vistas": 0, "interaccion": 0},
+      {"hora": "21:00 (Prime)", "vistas": 0, "interaccion": 0},
+      {"hora": "Cierre 24h", "vistas": 0, "interaccion": 0}
+    ],
     "copy_aprobado": "Bialetti Moka Express: ¿Estás usando la medida correcta para tu café? El 80% comete el error de elegir una medida que no se adapta a su rutina. Retirá la tuya directamente en nuestros locales exclusivos de Belgrano y Lanús.",
     "copy_recomendado": "Bialetti Moka Express: ¿Estás usando la medida correcta para tu café? El 80% comete el error de elegir una medida que no se adapta a su rutina. Retirá la tuya directamente en nuestros locales exclusivos de Belgrano y Lanús.",
-    "diagnostico_estrategico": "Estrategia de asesoramiento experto: no salimos a vender desesperados, salimos a educar al comprador para que elija el tamaño exacto. Esto posiciona a Mercado de Cafeteras como la autoridad máxima en cafeteras de Buenos Aires.",
-    "updated_at": "2026-09-29T13:24:16.652874+00:00"
+    "diagnostico_estrategico": "Estrategia de asesoramiento experto: no salimos a vender desesperados, salimos a educar al comprador para que elija el tamaño exacto. Esto posiciona a Mercado de Cafeteras como la autoridad máxima en cafeteras de Buenos Aires."
   },
   {
     "id": "6b134c29-8d1e-455d-8d85-323d4243b507",
@@ -102,9 +142,17 @@
     "retencion_gancho": "Hook de impacto al bolsillo en el segundo 1: «¿Seguís pagando una fortuna en la calle?»",
     "video_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/5dce9e5c3e6a4176a9cb066a56c1c6e0.mp4",
     "portada_url": "https://obdeiahobkpiwmlkbdih.supabase.co/storage/v1/object/public/videos/b6fa95ba98154a5f84a478ed5c6163ba.jpg",
+    "curva_traccion": [
+      {"hora": "18:30 (Salida)", "vistas": 0, "interaccion": 0},
+      {"hora": "19:15 (Calentando)", "vistas": 0, "interaccion": 0},
+      {"hora": "20:00 (Pico 100)", "vistas": 0, "interaccion": 0},
+      {"hora": "21:00 (Pico 100)", "vistas": 0, "interaccion": 0},
+      {"hora": "22:00", "vistas": 0, "interaccion": 0},
+      {"hora": "Lunes 10:00", "vistas": 0, "interaccion": 0},
+      {"hora": "Cierre 24h", "vistas": 0, "interaccion": 0}
+    ],
     "copy_aprobado": "¿Cuánto gastás por mes en café de especialidad al paso? Tomar 1 o 2 espressos afuera se transformó en una fortuna silenciosa. Mirá la Cafetera Espresso Hamilton Beach Profesional a precio bomba de salón: $180.000.",
     "copy_recomendado": "¿Cuánto gastás por mes en café de especialidad al paso? Tomar 1 o 2 espressos afuera se transformó en una fortuna silenciosa. Mirá la Cafetera Espresso Hamilton Beach Profesional a precio bomba de salón: $180.000.",
-    "diagnostico_estrategico": "El formato estrella de mayor rendimiento en redes: chica mirando a los ojos, dolor concreto de dinero, máquina funcionando con crema densa en 20 segundos y precio promocional irresistible con retiro inmediato.",
-    "updated_at": "2026-09-29T13:24:16.652874+00:00"
+    "diagnostico_estrategico": "El formato estrella de mayor rendimiento en redes: chica mirando a los ojos, dolor concreto de dinero, máquina funcionando con crema densa en 20 segundos y precio promocional irresistible con retiro inmediato."
   }
 ]
