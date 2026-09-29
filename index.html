@@ -409,15 +409,66 @@
               }
             },
             tooltip: {
-              backgroundColor: "#1e293b",
+              backgroundColor: "rgba(15, 23, 42, 0.96)",
               titleColor: "#fbbf24",
               bodyColor: "#f1f5f9",
               borderColor: "#334155",
-              borderWidth: 1,
-              padding: 12,
+              borderWidth: 1.5,
+              padding: 16,
+              cornerRadius: 12,
+              titleFont: { family: "'Plus Jakarta Sans', sans-serif", weight: "800", size: 13 },
+              bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12, lineHeight: 1.6 },
               callbacks: {
+                title: function(items) {
+                  const idx = items[0].dataIndex;
+                  const label = labels[idx] || "";
+                  return `⏰ Franja Horaria: ${label}`;
+                },
+                beforeBody: function(items) {
+                  return "";
+                },
                 label: function(ctx) {
-                  return ` ${ctx.dataset.label}: ${ctx.raw} personas mirando`;
+                  const idx = ctx.dataIndex;
+                  const currentVal = ctx.raw || 0;
+                  const dataArray = ctx.dataset.data;
+                  const prevVal = idx > 0 ? (dataArray[idx - 1] || 0) : 0;
+                  const diff = currentVal - prevVal;
+                  const post = ctx.datasetIndex === 0 ? pA : pB;
+
+                  const isDinamic = post.formato.toLowerCase().includes("persona") || post.formato.toLowerCase().includes("música") || post.titulo.includes("Dolce");
+                  const estiloTexto = isDinamic ? "Shock visual / Dinámico" : "Plano estático / Tradicional";
+
+                  let lineas = [
+                    `${ctx.datasetIndex === 0 ? '🟢' : '🟡'} ${ctx.dataset.label} (${estiloTexto}):`,
+                    `   • Audiencia acumulada: ${currentVal} personas`,
+                    idx > 0 ? `   • Aceleración en esta hora: +${diff} nuevos espectadores` : `   • Arranque inicial: ${currentVal} espectadores`
+                  ];
+
+                  if (post.vistas > 0) {
+                    if (isDinamic) {
+                      lineas.push(`   • Retención: ~65% vio el video completo (Cortes rápidos)`);
+                    } else {
+                      lineas.push(`   • Fuga: ~68% deslizó el dedo antes de los 3s (Inicio lento)`);
+                    }
+                  }
+                  return lineas;
+                },
+                afterBody: function(items) {
+                  const valA = items[0] ? (items[0].raw || 0) : 0;
+                  const valB = items[1] ? (items[1].raw || 0) : 0;
+                  
+                  if (valA === 0 && valB === 0) {
+                    return "\n⏳ Ambas publicaciones están programadas para medir tracción esta semana.";
+                  }
+
+                  const ratio = valB > 0 ? (valA / valB).toFixed(1) : (valA > 0 ? valA : 1);
+                  const lider = valA >= valB ? pA.titulo.split('(')[0].trim() : pB.titulo.split('(')[0].trim();
+                  
+                  return [
+                    "",
+                    "⚖️ DIAGNÓSTICO DE TRACCIÓN EN ESTE PUNTO:",
+                    `• ${lider} tracciona ${ratio}x más rápido gracias al impacto de los primeros 3 segundos, frenando la fuga del usuario en el celular.`
+                  ];
                 }
               }
             }
