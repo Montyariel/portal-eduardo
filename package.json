@@ -1,0 +1,9 @@
+{
+  "name": "portal-mercado-cafeteras",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portal interactivo de rendimiento para Mercado de Cafeteras",
+  "scripts": {
+    "start": "serve ."
+  }
+}

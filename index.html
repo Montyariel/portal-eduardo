@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Ejecutivo | Mercado de Cafeteras</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0f17;
+      --card-bg: #141b2d;
+      --card-border: #232d4b;
+      --text: #ffffff;
+      --text-muted: #94a3b8;
+      --gold: #f59e0b;
+      --gold-dark: #b45309;
+      --gold-light: rgba(245, 158, 11, 0.15);
+      --green: #10b981;
+      --green-light: rgba(16, 185, 129, 0.15);
+      --red: #ef4444;
+      --red-light: rgba(239, 68, 68, 0.15);
+      --blue: #38bdf8;
+      --blue-light: rgba(56, 189, 248, 0.15);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); min-height: 100vh; padding: 24px 16px 80px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    
+    /* Header */
+    header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--card-border); }
+    .brand-title { display: flex; align-items: center; gap: 14px; }
+    .brand-logo { width: 52px; height: 52px; background: linear-gradient(135deg, #f59e0b, #78350f); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
+    h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+    .subtitle { color: var(--text-muted); font-size: 0.88rem; margin-top: 3px; }
+    .badge-live { display: inline-flex; align-items: center; gap: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--green); color: #34d399; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; }
+    .pulse-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 1.8s infinite; }
+    @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; transform: scale(1.3); } 100% { opacity: 0.4; } }
+
+    /* Explicación amigable Eduardo */
+    .eduardo-banner { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-left: 5px solid var(--gold); border-radius: 12px; padding: 18px 20px; margin-bottom: 28px; }
+    .eduardo-banner h2 { font-size: 1.1rem; color: #fbbf24; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .eduardo-banner p { font-size: 0.95rem; color: #cbd5e1; line-height: 1.5; }
+
+    /* Tarjetas Resumen Mostrador */
+    .metrics-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .metric-box { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .metric-box .label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .metric-box .value { font-size: 2.1rem; font-weight: 800; letter-spacing: -1px; }
+    .metric-box .desc { font-size: 0.8rem; color: #94a3b8; margin-top: 6px; }
+
+    /* Sección MANO A MANO (1 vs 1) */
+    .versus-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 18px; padding: 24px; margin-bottom: 36px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .versus-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .versus-title { font-size: 1.3rem; font-weight: 800; color: #fbbf24; display: flex; align-items: center; gap: 10px; }
+    .versus-selectors { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; margin-bottom: 24px; }
+    @media (max-width: 768px) { .versus-selectors { grid-template-columns: 1fr; } }
+    .selector-box label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; }
+    .selector-box select { width: 100%; background: #0c0f17; border: 1px solid #334155; color: #fff; padding: 12px 14px; border-radius: 10px; font-size: 0.95rem; font-weight: 600; outline: none; cursor: pointer; }
+    .vs-circle { width: 44px; height: 44px; background: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; color: #fff; margin: 0 auto; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4); }
+    
+    .versus-card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 768px) { .versus-card-grid { grid-template-columns: 1fr; } }
+    .vs-side { background: #0c0f17; border: 1px solid #232d4b; border-radius: 14px; padding: 18px; }
+    .vs-side.winner { border-color: var(--green); box-shadow: 0 0 15px rgba(16, 185, 129, 0.2); }
+    .vs-post-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 12px; }
+    .vs-stat-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
+    .vs-stat-row:last-child { border-bottom: none; }
+    .vs-stat-label { color: var(--text-muted); }
+    .vs-stat-val { font-weight: 700; }
+    .vs-summary-verdict { background: #1e293b; border-radius: 10px; padding: 14px; margin-top: 18px; font-size: 0.92rem; color: #e2e8f0; line-height: 1.5; border-left: 4px solid var(--gold); }
+
+    /* Barra de Filtros */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; align-items: center; }
+    .filter-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: #cbd5e1; padding: 10px 18px; border-radius: 10px; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; }
+    .filter-btn:hover, .filter-btn.active { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+
+    /* Grilla de Publicaciones */
+    .posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+    .post-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease; }
+    .post-card:hover { transform: translateY(-4px); border-color: #3b82f6; }
+    .post-media-wrap { position: relative; height: 220px; background: #000; overflow: hidden; }
+    .post-media-wrap img, .post-media-wrap video { width: 100%; height: 100%; object-fit: cover; }
+    .termometro-badge { position: absolute; top: 12px; right: 12px; padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px; }
+    .termometro-caliente { background: #dc2626; color: #fff; box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4); }
+    .termometro-tibio { background: #d97706; color: #fff; }
+    .termometro-frio { background: #475569; color: #cbd5e1; }
+    .termometro-pendiente { background: #0284c7; color: #fff; }
+    .post-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+    .post-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+    .post-date { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; }
+    
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); background: #0c0f17; border-radius: 10px; padding: 12px 8px; text-align: center; gap: 4px; margin-bottom: 16px; border: 1px solid #1e293b; }
+    .stat-col .n { font-size: 1.15rem; font-weight: 800; }
+    .stat-col .t { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+
+    .retencion-box { background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; color: #38bdf8; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+    /* Pestañas de Copy */
+    .copy-tabs { display: flex; gap: 8px; margin-bottom: 10px; border-bottom: 1px solid #232d4b; padding-bottom: 8px; }
+    .tab-btn { background: none; border: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 700; cursor: pointer; padding: 4px 8px; border-radius: 6px; }
+    .tab-btn.active { color: #fbbf24; background: rgba(245, 158, 11, 0.1); }
+    .copy-text-box { background: #0c0f17; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.45; min-height: 80px; max-height: 140px; overflow-y: auto; margin-bottom: 16px; }
+    
+    .diagnostico-card { background: #1a2234; border-left: 4px solid var(--gold); border-radius: 6px; padding: 12px 14px; font-size: 0.85rem; color: #e2e8f0; line-height: 1.45; margin-top: auto; }
+    .diagnostico-card strong { color: #fbbf24; display: block; margin-bottom: 4px; }
+
+    /* Footer WhatsApp */
+    .whatsapp-float-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #16a34a; color: #fff; padding: 12px 24px; border-radius: 999px; text-decoration: none; font-weight: 800; font-size: 0.95rem; box-shadow: 0 10px 25px rgba(22, 163, 74, 0.4); display: flex; align-items: center; gap: 10px; z-index: 1000; transition: transform 0.2s ease; }
+    .whatsapp-float-bar:hover { transform: translateX(-50%) scale(1.05); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand-title">
+        <div class="brand-logo">☕</div>
+        <div>
+          <h1>Mercado de Cafeteras | Portal Ejecutivo</h1>
+          <div class="subtitle">Tablero de Rendimiento & Análisis Estratégico para Eduardo y Ariel</div>
+        </div>
+      </div>
+      <div class="badge-live">
+        <span class="pulse-dot"></span> DATOS EN VIVO
+      </div>
+    </header>
+
+    <!-- Banner Educativo Eduardo -->
+    <div class="eduardo-banner">
+      <h2>👋 Hola Eduardo: El termómetro del mostrador digital</h2>
+      <p>
+        Este panel traduce los números de Instagram a la realidad de tus salones en <strong>Belgrano y Lanús</strong>. 
+        El objetivo principal no son solo los "likes", sino cuánta gente <strong>se frena a mirar el producto en los primeros 3 segundos</strong> y cuántos <strong>se guardan la publicación para venir a comprarla</strong>. 
+        Acá podés comparar cómo rinde cada formato y ver por qué el producto siempre es un éxito cuando el enfoque es el adecuado.
+      </p>
+    </div>
+
+    <!-- Métricas Resumen -->
+    <div class="metrics-summary">
+      <div class="metric-box">
+        <div class="label">👁️ FRENARON A MIRAR <span style="font-size: 1.2rem;">☕</span></div>
+        <div class="value" id="totVistas">1.502</div>
+        <div class="desc">Personas que se detuvieron a ver los videos esta semana.</div>
+      </div>
+      <div class="metric-box">
+        <div class="label">🏷️ SE LO GUARDARON <span style="font-size: 1.2rem;">📌</span></div>
+        <div class="value" id="totGuardados" style="color: #38bdf8;">10</div>
+        <div class="desc">Clientes que guardaron el video como recordatorio de compra.</div>
+      </div>
+      <div class="metric-box">
+        <div class="label">💬 PREGUNTARON PRECIO <span style="font-size: 1.2rem;">🗣️</span></div>
+        <div class="value" id="totComentarios" style="color: #10b981;">7</div>
+        <div class="desc">Consultas directas por palabras clave en los comentarios.</div>
+      </div>
+      <div class="metric-box">
+        <div class="label">🏆 VIDEO RÉCORD ACTUAL <span style="font-size: 1.2rem;">🥇</span></div>
+        <div class="value" style="color: #fbbf24; font-size: 1.6rem; margin-top: 4px;">Dolce & Gabbana</div>
+        <div class="desc">896 vistas (Nuestro nuevo piso mínimo a superar).</div>
+      </div>
+    </div>
+
+    <!-- Módulo MANO A MANO (1 vs 1) -->
+    <div class="versus-section">
+      <div class="versus-header">
+        <div class="versus-title">🥊 Modo "Mano a Mano": Comparador de Formatos</div>
+        <small style="color: var(--text-muted);">Elegí dos publicaciones y mirá cuál tracciona mejor</small>
+      </div>
+
+      <div class="versus-selectors">
+        <div class="selector-box">
+          <label>📌 Elegir Video 1 (A):</label>
+          <select id="selPostA" onchange="actualizarVersus()"></select>
+        </div>
+        <div class="vs-circle">VS</div>
+        <div class="selector-box">
+          <label>📌 Elegir Video 2 (B):</label>
+          <select id="selPostB" onchange="actualizarVersus()"></select>
+        </div>
+      </div>
+
+      <div class="versus-card-grid" id="versusResultados"></div>
+    </div>
+
+    <!-- Barra de Filtros -->
+    <div class="filter-bar">
+      <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted); margin-right: 6px;">Filtrar por:</span>
+      <button class="filter-btn active" onclick="filtrarPosts('TODOS', this)">☕ Todos los videos</button>
+      <button class="filter-btn" onclick="filtrarPosts('PUBLICADOS', this)">✅ Con métricas finales</button>
+      <button class="filter-btn" onclick="filtrarPosts('PENDIENTES', this)">⏳ Programados esta semana</button>
+      <button class="filter-btn" onclick="filtrarPosts('PERSONAS', this)">👤 Con personas en salón</button>
+    </div>
+
+    <!-- Grilla de Tarjetas -->
+    <div class="posts-grid" id="postsContainer"></div>
+  </div>
+
+  <!-- Botón WhatsApp Soporte Eduardo -->
+  <a href="https://wa.me/5491136889125?text=Hola%20Ariel,%20estoy%20mirando%20el%20portal%20de%20Mercado%20de%20Cafeteras%20y%20quería%20hacerte%20una%20consulta." target="_blank" class="whatsapp-float-bar">
+    📲 ¿Tenés alguna duda, Eduardo? Hablá con Ariel por WhatsApp
+  </a>
+
+  <script>
+    // Carga de datos rápida y segura
+    let todosLosPosts = [];
+
+    async function cargarDatos() {
+      try {
+        const res = await fetch("./posts_data.json");
+        todosLosPosts = await res.json();
+        poblarSelectores();
+        renderizarCards(todosLosPosts);
+        actualizarVersus();
+      } catch (err) {
+        console.error("Error al cargar datos:", err);
+      }
+    }
+
+    function poblarSelectores() {
+      const selA = document.getElementById("selPostA");
+      const selB = document.getElementById("selPostB");
+      selA.innerHTML = "";
+      selB.innerHTML = "";
+
+      todosLosPosts.forEach((p, idx) => {
+        const optA = document.createElement("option");
+        optA.value = p.id;
+        optA.textContent = `${p.titulo} (${p.vistas > 0 ? p.vistas + ' vistas' : 'Programado'})`;
+        if (idx === 0) optA.selected = true; // Dolce & Gabbana
+        selA.appendChild(optA);
+
+        const optB = document.createElement("option");
+        optB.value = p.id;
+        optB.textContent = `${p.titulo} (${p.vistas > 0 ? p.vistas + ' vistas' : 'Programado'})`;
+        if (idx === 1) optB.selected = true; // Bialetti Saborizados
+        selB.appendChild(optB);
+      });
+    }
+
+    function actualizarVersus() {
+      const idA = document.getElementById("selPostA").value;
+      const idB = document.getElementById("selPostB").value;
+      const pA = todosLosPosts.find(p => p.id === idA);
+      const pB = todosLosPosts.find(p => p.id === idB);
+
+      if (!pA || !pB) return;
+
+      const isWinnerA = pA.vistas >= pB.vistas;
+      const contenedor = document.getElementById("versusResultados");
+
+      contenedor.innerHTML = `
+        <div class="vs-side ${isWinnerA ? 'winner' : ''}">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.8rem; font-weight: 800; color: ${isWinnerA ? '#10b981' : '#94a3b8'};">
+              ${isWinnerA ? '🏆 MÁS VISTO Y RETENIDO' : 'VIDEO A'}
+            </span>
+            <span style="font-size: 0.75rem; color: #64748b;">${pA.fecha_publicacion}</span>
+          </div>
+          <div class="vs-post-title">${pA.titulo}</div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Frenaron a mirar (Vistas):</span>
+            <span class="vs-stat-val" style="color: ${isWinnerA ? '#10b981' : '#fff'}; font-size: 1.1rem;">${pA.vistas}</span>
+          </div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Se lo guardaron en el bolsillo:</span>
+            <span class="vs-stat-val" style="color: #38bdf8;">${pA.guardados}</span>
+          </div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Preguntaron precio:</span>
+            <span class="vs-stat-val">${pA.comentarios}</span>
+          </div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Formato del video:</span>
+            <span class="vs-stat-val" style="color: #fbbf24;">${pA.formato}</span>
+          </div>
+          <div class="vs-summary-verdict">
+            <strong>💡 Conclusión de este formato:</strong><br>
+            ${pA.diagnostico_estrategico}
+          </div>
+        </div>
+
+        <div class="vs-side ${!isWinnerA ? 'winner' : ''}">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 0.8rem; font-weight: 800; color: ${!isWinnerA ? '#10b981' : '#94a3b8'};">
+              ${!isWinnerA ? '🏆 MÁS VISTO Y RETENIDO' : 'VIDEO B'}
+            </span>
+            <span style="font-size: 0.75rem; color: #64748b;">${pB.fecha_publicacion}</span>
+          </div>
+          <div class="vs-post-title">${pB.titulo}</div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Frenaron a mirar (Vistas):</span>
+            <span class="vs-stat-val" style="color: ${!isWinnerA ? '#10b981' : '#fff'}; font-size: 1.1rem;">${pB.vistas}</span>
+          </div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Se lo guardaron en el bolsillo:</span>
+            <span class="vs-stat-val" style="color: #38bdf8;">${pB.guardados}</span>
+          </div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Preguntaron precio:</span>
+            <span class="vs-stat-val">${pB.comentarios}</span>
+          </div>
+          <div class="vs-stat-row">
+            <span class="vs-stat-label">Formato del video:</span>
+            <span class="vs-stat-val" style="color: #fbbf24;">${pB.formato}</span>
+          </div>
+          <div class="vs-summary-verdict">
+            <strong>💡 Conclusión de este formato:</strong><br>
+            ${pB.diagnostico_estrategico}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderizarCards(posts) {
+      const cont = document.getElementById("postsContainer");
+      cont.innerHTML = "";
+
+      posts.forEach(p => {
+        const badgeClass = p.termometro === 'CALIENTE' ? 'termometro-caliente' : (p.termometro === 'FRIO' ? 'termometro-frio' : 'termometro-pendiente');
+        const badgeText = p.termometro === 'CALIENTE' ? '🔥 CALIENTE' : (p.termometro === 'FRIO' ? '❄️ TIBIO / FRÍO' : '⏳ PROGRAMADO');
+
+        const card = document.createElement("div");
+        card.className = "post-card";
+        card.innerHTML = `
+          <div class="post-media-wrap">
+            <img src="${p.portada_url}" alt="${p.titulo}">
+            <div class="termometro-badge ${badgeClass}">${badgeText}</div>
+          </div>
+          <div class="post-content">
+            <div class="post-date">📅 ${p.fecha_publicacion} • <span style="color: #fbbf24;">${p.formato}</span></div>
+            <div class="post-title">${p.titulo}</div>
+
+            <div class="stats-row">
+              <div class="stat-col"><div class="n">${p.vistas}</div><div class="t">Vistas</div></div>
+              <div class="stat-col"><div class="n" style="color: #38bdf8;">${p.guardados}</div><div class="t">Guardados</div></div>
+              <div class="stat-col"><div class="n" style="color: #10b981;">${p.comentarios}</div><div class="t">Comentarios</div></div>
+              <div class="stat-col"><div class="n">${p.me_gusta}</div><div class="t">Likes</div></div>
+            </div>
+
+            <div class="retencion-box">
+              <span>⏱️</span> <strong>Gancho inicial:</strong> ${p.retencion_gancho}
+            </div>
+
+            <div class="copy-tabs">
+              <button class="tab-btn active" onclick="cambiarTab(this, 'aprobado', '${p.id}')">Texto que salió</button>
+              <button class="tab-btn" onclick="cambiarTab(this, 'recomendado', '${p.id}')">Consejo estratégico</button>
+            </div>
+            <div class="copy-text-box" id="copyBox_${p.id}">${p.copy_aprobado}</div>
+
+            <div class="diagnostico-card">
+              <strong>🎯 Análisis para Eduardo:</strong>
+              ${p.diagnostico_estrategico}
+            </div>
+          </div>
+        `;
+        cont.appendChild(card);
+      });
+    }
+
+    function cambiarTab(btn, tipo, id) {
+      const post = todosLosPosts.find(p => p.id === id);
+      if (!post) return;
+      const box = document.getElementById(`copyBox_${id}`);
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (tipo === 'aprobado') {
+        box.textContent = post.copy_aprobado;
+      } else {
+        box.textContent = post.copy_recomendado;
+      }
+    }
+
+    function filtrarPosts(tipo, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (tipo === 'TODOS') {
+        renderizarCards(todosLosPosts);
+      } else if (tipo === 'PUBLICADOS') {
+        renderizarCards(todosLosPosts.filter(p => p.vistas > 0));
+      } else if (tipo === 'PENDIENTES') {
+        renderizarCards(todosLosPosts.filter(p => p.vistas === 0));
+      } else if (tipo === 'PERSONAS') {
+        renderizarCards(todosLosPosts.filter(p => p.formato.toLowerCase().includes('persona') || p.formato.toLowerCase().includes('influencer')));
+      }
+    }
+
+    window.onload = cargarDatos;
+  </script>
+</body>
+</html>
